@@ -10,40 +10,36 @@ int main()
     {
         int n;
         cin >> n;
-        vector<int> heights(n);
+        vector<int> h(n);
 
         for (int i = 0; i < n; i++)
         {
-            cin >> heights[i];
+            cin >> h[i];
         }
 
-        int maxVal = -1, secondMaxVal = -1;
+        int maxV = -1, secondMaxV = -1;
         int maxIdx = -1, secondMaxIdx = -1;
 
         for (int i = 0; i < n; i++)
         {
-            if (heights[i] > maxVal)
+            if (h[i] > maxV)
             {
-                secondMaxVal = maxVal;
+                secondMaxV = maxV;
                 secondMaxIdx = maxIdx;
-                maxVal = heights[i];
+                maxV = h[i];
                 maxIdx = i;
             }
-            else if (heights[i] > secondMaxVal)
+            else if (h[i] > secondMaxV)
             {
-                secondMaxVal = heights[i];
+                secondMaxV = h[i];
                 secondMaxIdx = i;
             }
         }
 
         if (maxIdx < secondMaxIdx)
-        {
             cout << maxIdx << " " << secondMaxIdx << endl;
-        }
         else
-        {
             cout << secondMaxIdx << " " << maxIdx << endl;
-        }
     }
 
     return 0;

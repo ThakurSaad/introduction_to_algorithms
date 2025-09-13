@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
-#define ll long long int
 using namespace std;
 
-const ll INF = 1e18;
+const long long INF = 1e18;
 
 int main()
 {
-    ll n, e;
+    long long n, e;
     cin >> n >> e;
 
-    ll adj[n + 1][n + 1];
+    long long adj[n + 1][n + 1];
+
     for (int i = 1; i <= n; i++)
     {
-        for (int j = 1; j <= n; j++)
+        for (int j = 0; j < n; j++)
         {
             adj[i][j] = INF;
             if (i == j)
@@ -24,18 +24,18 @@ int main()
     {
         int a, b, c;
         cin >> a >> b >> c;
-        adj[a][b] = min(adj[a][b], (ll)c);
+        adj[a][b] = min(adj[a][b], (long long)c);
     }
 
-    for (int k = 1; k <= n; k++)
+    for (int x = 1; x <= n; x++)
     {
-        for (int i = 1; i <= n; i++)
+        for (int y = 1; y <= n; y++)
         {
-            for (int j = 1; j <= n; j++)
+            for (int z = 1; z <= n; z++)
             {
-                if (adj[i][k] != INF && adj[k][j] != INF)
+                if (adj[y][x] != INF && adj[x][z] != INF)
                 {
-                    adj[i][j] = min(adj[i][j], adj[i][k] + adj[k][j]);
+                    adj[y][z] = min(adj[y][z], adj[y][x] + adj[x][z]);
                 }
             }
         }
