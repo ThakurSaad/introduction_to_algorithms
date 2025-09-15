@@ -3,41 +3,41 @@ using namespace std;
 
 const int N = 1e5 + 5;
 int parent[N];
-int groupSize[N];
+int groupSz[N];
 
 void dsu_initialize(int n)
 {
     for (int i = 0; i < n; i++)
     {
         parent[i] = -1;
-        groupSize[i] = 1;
+        groupSz[i] = 1;
     }
 }
 
-int findLeader(int node)
+int find_leader(int node)
 {
     if (parent[node] == -1)
         return node;
 
-    int leader = findLeader(parent[node]);
+    int leader = find_leader(parent[node]);
     parent[node] = leader;
     return leader;
 }
 
-void UnionBySize(int node1, int node2)
+void union_by_size(int node1, int node2)
 {
-    int leaderA = findLeader(node1);
-    int leaderB = findLeader(node2);
+    int leaderA = find_leader(node1);
+    int leaderB = find_leader(node2);
 
-    if (groupSize[leaderA] > groupSize[leaderB])
+    if (groupSz[leaderA] > groupSz[leaderB])
     {
         parent[leaderB] = leaderA;
-        groupSize[leaderA] += groupSize[leaderB];
+        groupSz[leaderA] += groupSz[leaderB];
     }
     else
     {
         parent[leaderA] = leaderB;
-        groupSize[leaderB] += groupSize[leaderA];
+        groupSz[leaderB] += groupSz[leaderA];
     }
 }
 
@@ -54,8 +54,8 @@ int main()
         int a, b;
         cin >> a >> b;
 
-        int leaderA = findLeader(a);
-        int leaderB = findLeader(b);
+        int leaderA = find_leader(a);
+        int leaderB = find_leader(b);
 
         if (leaderA == leaderB)
         {
@@ -63,7 +63,7 @@ int main()
         }
         else
         {
-            UnionBySize(a, b);
+            union_by_size(a, b);
         }
     }
 
