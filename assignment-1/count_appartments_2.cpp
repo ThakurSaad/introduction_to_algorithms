@@ -60,7 +60,7 @@ int main()
 
     if (apartments.empty())
     {
-        cout << "0" << "\n";
+        cout << "0" << endl;
         return 0;
     }
 
@@ -73,7 +73,7 @@ int main()
             cout << " ";
     }
 
-    cout << endl;
+    
 
     return 0;
 }
